@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Header } from './components/layout/Header';
 import { BottomNav } from './components/layout/BottomNav';
+import { SideMenu } from './components/layout/SideMenu';
+import { Footer } from './components/layout/Footer';
 import { HeroSection } from './components/home/HeroSection';
 import { FeatureGrid } from './components/home/FeatureGrid';
 import { BreweryCard } from './components/breweries/BreweryCard';
@@ -104,6 +106,7 @@ export default function App() {
     isOpen: boolean;
     token: any;
   }>({ isOpen: false, token: null });
+  const [sideMenuOpen, setSideMenuOpen] = useState(false);
 
   const handleGetStarted = () => {
     setActiveTab('breweries');
@@ -297,13 +300,23 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background">
       <Header 
-        onMenuClick={() => {}} 
+        onMenuClick={() => setSideMenuOpen(true)} 
+        userTokens={userTokens}
+      />
+      
+      <SideMenu
+        isOpen={sideMenuOpen}
+        onClose={() => setSideMenuOpen(false)}
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
         userTokens={userTokens}
       />
       
       <main className="max-w-6xl mx-auto">
         {renderContent()}
       </main>
+      
+      <Footer />
       
       <BottomNav 
         activeTab={activeTab} 

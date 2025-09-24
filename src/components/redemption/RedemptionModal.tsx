@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { QrCode, X, CheckCircle } from 'lucide-react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../ui/dialog';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 
@@ -56,6 +56,9 @@ export function RedemptionModal({
               <X className="h-4 w-4" />
             </Button>
           </DialogTitle>
+          <DialogDescription>
+            Show this QR code to brewery staff to redeem your growler fill
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
